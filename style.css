@@ -213,6 +213,16 @@ nav ul a:hover{
     transform:translateY(-2px);
 }
 
+.btn:focus-visible,
+.carousel-btn:focus-visible,
+.modal-close:focus-visible,
+.contact-item:focus-visible,
+.btn-ghost:focus-visible,
+.modal-download:focus-visible{
+    outline:3px solid rgba(127,217,164,.8);
+    outline-offset:3px;
+}
+
 .btn-ghost{
     background:transparent;
     color:var(--text);
@@ -506,6 +516,14 @@ section{
     justify-content:center;
     min-height:220px;
     border-right:1px solid var(--border);
+    overflow:hidden;
+}
+
+.project-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
 .placeholder-media span{
@@ -737,7 +755,7 @@ footer{
         font-size:2.4rem;
     }
 
-    .nav-container{
+    .nav-pill{
         flex-wrap:wrap;
         justify-content:center;
         gap:14px;
