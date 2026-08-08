@@ -335,7 +335,9 @@ document.querySelectorAll('[data-carousel]').forEach(function(carousel){
 function openResumeModal(){
     var modal = document.getElementById('resumeModal');
     var frame = document.getElementById('resumeFrame');
-    if(!frame.src){ frame.src = 'resume.pdf'; }
+    if(frame.getAttribute('src') !== 'resume.pdf'){
+        frame.setAttribute('src', 'resume.pdf');
+    }
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
 }
