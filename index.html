@@ -96,31 +96,76 @@
 
         <div class="grid">
             <div class="card">
-                <span class="card-index">01</span>
-                <h3>Website Fixes</h3>
-                <p>
-                    Fixing HTML, CSS, JavaScript, and Firebase issues —
-                    responsive layouts, broken forms, and general
-                    website functionality problems.
-                </p>
+                <div class="card-media carousel" data-carousel>
+                    <div class="carousel-track">
+                        <img src="Web/1.png" alt="Website Fixes 1">
+                        <img src="Web/2.png" alt="Website Fixes 2">
+                        <img src="Web/3.png" alt="Website Fixes 3">
+                        <img src="Web/4.png" alt="Website Fixes 4">
+                        <img src="Web/5.png" alt="Website Fixes 5">
+                        <img src="Web/6.png" alt="Website Fixes 6">
+
+                    </div>
+                    <button type="button" class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+                    <button type="button" class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="card-body">
+                    <span class="card-index">01</span>
+                    <h3>Website Fixes</h3>
+                    <p>
+                        Fixing HTML, CSS, JavaScript, and Firebase issues —
+                        responsive layouts, broken forms, and general
+                        website functionality problems.
+                    </p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-index">02</span>
-                <h3>Data Entry</h3>
-                <p>
-                    Accurate data encoding, spreadsheet organization,
-                    data cleaning, and routine database updates.
-                </p>
+                <div class="card-media carousel" data-carousel>
+                    <div class="carousel-track">
+                        <img src="data/7.png" alt="Data Entry 1">
+                        <img src="data/8.png" alt="Data Entry 2">
+                        <img src="data/9.png" alt="Data Entry 3">
+                        <img src="data/10.png" alt="Data Entry 4">
+                    </div>
+                    <button type="button" class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+                    <button type="button" class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="card-body">
+                    <span class="card-index">02</span>
+                    <h3>Data Entry</h3>
+                    <p>
+                        Accurate data encoding, spreadsheet organization,
+                        data cleaning, and routine database updates.
+                    </p>
+                </div>
             </div>
 
             <div class="card">
-                <span class="card-index">03</span>
-                <h3>Database Management</h3>
-                <p>
-                    Record maintenance, data verification, database
-                    organization, and reporting you can rely on.
-                </p>
+                <div class="card-media carousel" data-carousel>
+                    <div class="carousel-track">
+                        <img src="database/11.png" alt="Database Management 1">
+                        <img src="database/12.png" alt="Database Management 2">
+                        <img src="database/13.png" alt="Database Management 3">
+                        <img src="database/14.png" alt="Database Management 4">
+                        <img src="database/15.png" alt="Database Management 5">
+                        <img src="database/16.png" alt="Database Management 6">
+                        <img src="database/17.png" alt="Database Management 7">
+                    </div>
+                    <button type="button" class="carousel-btn prev" aria-label="Previous photo">&#8249;</button>
+                    <button type="button" class="carousel-btn next" aria-label="Next photo">&#8250;</button>
+                    <div class="carousel-dots"></div>
+                </div>
+                <div class="card-body">
+                    <span class="card-index">03</span>
+                    <h3>Database Management</h3>
+                    <p>
+                        Record maintenance, data verification, database
+                        organization, and reporting you can rely on.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -132,8 +177,8 @@
         <h2>Featured Projects</h2>
 
         <div class="project-card">
-            <div class="project-media placeholder-media" aria-hidden="true">
-                <span>Doctor Appointment System</span>
+            <div class="carousel-track" aria-hidden="true">
+                <img src="19.png" alt="Website Fixes 1">
             </div>
             <div class="project-body">
                 <span class="card-index">01</span>
@@ -147,8 +192,8 @@
         </div>
 
         <div class="project-card">
-            <div class="project-media placeholder-media" aria-hidden="true">
-                <span>PredictHealth</span>
+            <div class="carousel-track" aria-hidden="true">
+                <img src="18.png" alt="Website Fixes 1">
             </div>
             <div class="project-body">
                 <span class="card-index">02</span>
@@ -224,6 +269,32 @@
 <footer>
     <p>© 2026 Francis John Pablo. All Rights Reserved.</p>
 </footer>
+
+<script>
+document.querySelectorAll('[data-carousel]').forEach(function(carousel){
+    var track = carousel.querySelector('.carousel-track');
+    var images = track.querySelectorAll('img');
+    var dotsWrap = carousel.querySelector('.carousel-dots');
+    var index = 0;
+
+    images.forEach(function(_, i){
+        var dot = document.createElement('span');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', function(){ goTo(i); });
+        dotsWrap.appendChild(dot);
+    });
+    var dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+    function goTo(i){
+        index = (i + images.length) % images.length;
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        dots.forEach(function(d, di){ d.classList.toggle('active', di === index); });
+    }
+
+    carousel.querySelector('.prev').addEventListener('click', function(){ goTo(index - 1); });
+    carousel.querySelector('.next').addEventListener('click', function(){ goTo(index + 1); });
+});
+</script>
 
 </body>
 </html>
