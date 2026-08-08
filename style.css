@@ -33,6 +33,7 @@ body{
     background:var(--bg);
     color:var(--text);
     line-height:1.7;
+    padding-top:110px;
 }
 
 .container{
@@ -85,11 +86,14 @@ h2{
 /* Navigation */
 
 nav{
-    position:sticky;
+    position:fixed;
     top:0;
+    left:0;
+    width:100%;
     z-index:1000;
     padding:20px 0 0;
-    background:linear-gradient(var(--bg),rgba(13,26,18,.7) 70%,transparent);
+    background:linear-gradient(var(--bg),rgba(13,26,18,.95) 70%,rgba(13,26,18,.95));
+    backdrop-filter:blur(10px);
 }
 
 .nav-pill{
