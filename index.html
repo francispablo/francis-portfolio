@@ -40,8 +40,8 @@
  
                 </p>
                 <div class="hero-actions">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="https://github.com/francispablo" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+                    <a href="#services" class="btn">Service Offer</a>
+                    <a href="#projects" class="btn btn-ghost">Projects</a>
                 </div>
             </div>
 
@@ -49,9 +49,9 @@
                 <div class="avatar-panel">
                     <img src="GIE_6141.JPG" alt="Francis John Pablo">
                 </div>
-                <div class="status-badge">
-                    <span>Open<br>to&nbsp;Work</span>
-                </div>
+                <button type="button" class="status-badge" onclick="openResumeModal()">
+                    <span>View<br>Resume</span>
+                </button>
             </div>
         </div>
     </div>
@@ -260,8 +260,27 @@
         <h2>Let's work together</h2>
         <p class="section-lead">Available for freelance opportunities.</p>
 
-        <a href="https://github.com/francispablo" target="_blank" class="btn">
-            View GitHub ↗
+        <div class="contact-list">
+            <a href="mailto:pablofrancisjohn2@gmail.com" class="contact-item">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">pablofrancisjohn2@gmail.com</span>
+            </a>
+            <a href="tel:+639999454310" class="contact-item">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">0999 945 4310</span>
+            </a>
+            <a href="https://www.linkedin.com/in/francis-john-pablo-a03383409" target="_blank" class="contact-item">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">francis-john-pablo</span>
+            </a>
+            <a href="https://github.com/francispablo" target="_blank" class="contact-item">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">francispablo</span>
+            </a>
+        </div>
+
+        <a href="mailto:pablofrancisjohn2@gmail.com" class="btn">
+            Get In Touch
         </a>
     </div>
 </section>
@@ -293,6 +312,41 @@ document.querySelectorAll('[data-carousel]').forEach(function(carousel){
 
     carousel.querySelector('.prev').addEventListener('click', function(){ goTo(index - 1); });
     carousel.querySelector('.next').addEventListener('click', function(){ goTo(index + 1); });
+});
+</script>
+
+<div class="modal-overlay" id="resumeModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <span>Francis John Pablo — Resume</span>
+            <div class="modal-actions">
+                <a href="resume.pdf" download class="modal-download" title="Download PDF">Download</a>
+                <button type="button" class="modal-close" onclick="closeResumeModal()" aria-label="Close">&times;</button>
+            </div>
+        </div>
+        <div class="modal-body">
+            <iframe id="resumeFrame" src="" title="Resume PDF"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+function openResumeModal(){
+    var modal = document.getElementById('resumeModal');
+    var frame = document.getElementById('resumeFrame');
+    if(!frame.src){ frame.src = 'resume.pdf'; }
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeResumeModal(){
+    document.getElementById('resumeModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('resumeModal').addEventListener('click', function(e){
+    if(e.target === this){ closeResumeModal(); }
+});
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeResumeModal(); }
 });
 </script>
 
